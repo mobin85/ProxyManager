@@ -19,9 +19,12 @@ services:
     network_mode: "host" # برای پرفورمنس بهتر و دریافت آی‌پی واقعی کلاینت‌ها
     depends_on:
       - tor
+    environment:
+      - PYTHONPATH=/app
     volumes:
       # متصل کردن گواهینامه‌های SSL (فقط خواندنی)
       - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./filter_plugin.py:/app/filter_plugin.py:ro
     command: >
       proxy
       --hostname 0.0.0.0

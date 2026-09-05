@@ -10,6 +10,9 @@ ALLOWED_DOMAINS = [
 ]
 
 class DomainFilterPlugin(HttpProxyBasePlugin):
+    def before_upstream_connection(self, request: HttpParser) -> Optional[HttpParser]:
+        return self.handle_client_request(request)
+
     def handle_client_request(self, request: HttpParser) -> Optional[HttpParser]:
         if not request.host:
             return request

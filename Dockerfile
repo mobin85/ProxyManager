@@ -3,6 +3,9 @@ FROM python:3.11-slim
 # تنظیم دایرکتوری کاری
 WORKDIR /app
 
+# اضافه کردن دایرکتوری کاری به مسیر ماژول‌های پایتون
+ENV PYTHONPATH=/app
+
 # نصب proxy.py
 RUN pip install --no-cache-dir proxy.py
 
