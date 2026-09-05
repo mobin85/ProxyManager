@@ -28,7 +28,7 @@ services:
     command: >
       proxy
       --hostname 0.0.0.0
-      --port 443
+      --port 8443
       --key-file /etc/letsencrypt/live/p.exitlagplus.ir/privkey.pem
       --cert-file /etc/letsencrypt/live/p.exitlagplus.ir/fullchain.pem
       --plugins filter_plugin.DomainFilterPlugin
