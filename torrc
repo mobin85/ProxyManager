@@ -2,3 +2,7 @@ SocksPort 0.0.0.0:9050
 HTTPTunnelPort 0.0.0.0:8118
 DataDirectory /var/lib/tor
 ClientOnly 1
+
+# تغییر خودکار مدار و آی‌پی هر ۲ دقیقه (۱۲۰ ثانیه)
+MaxCircuitDirtiness 120
+NewCircuitPeriod 30

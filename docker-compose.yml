@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.tor
     restart: always
-    scale: ${TOR_REPLICAS:-10}
+    scale: 2
     deploy:
       resources:
         limits:
