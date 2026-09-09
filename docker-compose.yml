@@ -20,15 +20,11 @@ services:
     environment:
       - PYTHONPATH=/app
     volumes:
-      # متصل کردن گواهینامه‌های SSL (فقط خواندنی)
-      - /etc/letsencrypt:/etc/letsencrypt:ro
       - ./filter_plugin.py:/app/filter_plugin.py:ro
     command: >
       proxy
       --hostname 0.0.0.0
       --port 8443
-      --key-file /etc/letsencrypt/live/p.exitlagplus.ir/privkey.pem
-      --cert-file /etc/letsencrypt/live/p.exitlagplus.ir/fullchain.pem
       --plugins filter_plugin.DomainFilterPlugin
       --plugins proxy.plugin.ProxyPoolPlugin
       --proxy-pool http://127.0.0.1:8118
