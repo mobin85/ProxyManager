@@ -1,6 +1,11 @@
 FROM alpine:latest
 
 # Pre-install tor in the image so containers don't download it at startup
-RUN apk add --no-cache tor
+RUN apk add --no-cache tor && \
+    chown -R tor:tor /var/lib/tor && \
+    chmod 700 /var/lib/tor
+
+USER tor
 
 CMD ["tor", "-f", "/etc/tor/torrc"]
+
