@@ -1,0 +1,11 @@
+services:
+  gost-relay:
+    image: ginuerzh/gost
+    container_name: gost_relay
+    restart: always
+    ports:
+      # پورت 8443 که کلاینت‌ها با پروکسیفایر به آن متصل می‌شوند
+      - "8443:8443"
+    command: >
+      -L tcp://:8443/secure-proxy:8443
+      -F relay+tls://exitlag_user:ExitLagPass1234@GERMANY_SERVER_IP:9443

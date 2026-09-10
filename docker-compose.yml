@@ -21,7 +21,9 @@ services:
     container_name: proxy_manager
     restart: unless-stopped
     ports:
-      - "8443:8443"
+      - "127.0.0.1:8443:8443"
+    expose:
+      - "8443"
     depends_on:
       - tor
     environment:
@@ -35,3 +37,14 @@ services:
       --plugins filter_plugin.DomainFilterPlugin
       --plugins proxy.plugin.ProxyPoolPlugin
       --proxy-pool http://tor:8118
+
+  gost-receiver:
+    image: ginuerzh/gost
+    container_name: gost_receiver
+    restart: always
+    ports:
+      - "9443:9443"
+    command: -L relay+tls://exitlag_user:ExitLagPass1234@:9443
+    depends_on:
+      - secure-proxy
+
