@@ -6,3 +6,6 @@ ClientOnly 1
 # تغییر خودکار مدار و آی‌پی هر ۲ دقیقه (۱۲۰ ثانیه)
 MaxCircuitDirtiness 120
 NewCircuitPeriod 30
+
+ExitNodes {de},{nl},{fr}
+StrictNodes 1
