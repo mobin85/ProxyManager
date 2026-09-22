@@ -10,9 +10,6 @@ ALLOWED_DOMAINS = [
     b'exitlag.com',
     b'exitlag.net',
     b'r2.dev',
-    b'cloudflare.com',
-    b'challenges.cloudflare.com',
-    b'cloudflareinsights.com',
 ]
 
 class DomainFilterPlugin(HttpProxyBasePlugin):
