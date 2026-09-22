@@ -44,7 +44,7 @@ services:
     restart: always
     ports:
       - "9443:9443"
-    command: -L relay+tls://exitlag_user:ExitLagPass1234@:9443
+    command: -L relay+tls://${GOST_USER}:${GOST_PASS}@:${GOST_PORT}
     depends_on:
       - secure-proxy
 

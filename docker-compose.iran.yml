@@ -8,4 +8,4 @@ services:
       - "8443:8443"
     command: >
       -L tcp://:8443/secure-proxy:8443
-      -F relay+tls://exitlag_user:ExitLagPass1234@82.115.26.238:9443
+      -F relay+tls://${GOST_USER}:${GOST_PASS}@${FOREIGN_SERVER_IP}:${GOST_PORT}
