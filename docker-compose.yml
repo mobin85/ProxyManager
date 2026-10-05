@@ -26,6 +26,7 @@ services:
       - "8443"
     depends_on:
       - tor
+      - warp
     environment:
       - PYTHONPATH=/app
     volumes:
@@ -37,6 +38,18 @@ services:
       --plugins filter_plugin.DomainFilterPlugin
       --plugins proxy.plugin.ProxyPoolPlugin
       --proxy-pool http://tor:8118
+      --proxy-pool socks5://warp:1080
+
+  warp:
+    image: caomingjun/warp
+    container_name: warp_proxy
+    restart: always
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.disable_ipv6=0
 
   gost-receiver:
     image: ginuerzh/gost
