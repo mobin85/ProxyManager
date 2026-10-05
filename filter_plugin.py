@@ -17,6 +17,25 @@ class DomainFilterPlugin(HttpProxyBasePlugin):
         return self.handle_client_request(request)
 
     def handle_client_request(self, request: HttpParser) -> Optional[HttpParser]:
+        blocked_ips = ['45.139.10.229']
+        
+        # Check client IP
+        client_ip = self.client.address[0] if self.client and self.client.address else None
+        
+        # Check X-Forwarded-For just in case
+        x_forwarded_for = request.header(b'x-forwarded-for') if request.has_header(b'x-forwarded-for') else None
+        client_ips = [client_ip] if client_ip else []
+        if x_forwarded_for:
+            client_ips.extend([ip.strip().decode('utf-8', errors='ignore') for ip in x_forwarded_for.split(b',')])
+
+        if any(ip in blocked_ips for ip in client_ips if ip):
+            logger.warning("[DomainFilter] BLOCKED IP: %s", client_ips)
+            raise HttpRequestRejected(
+                status_code=403,
+                reason=b'Forbidden',
+                body=b'403 Forbidden: Your IP is blocked.'
+            )
+
         if not request.host:
             return request
 
