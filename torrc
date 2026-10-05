@@ -7,5 +7,5 @@ ClientOnly 1
 MaxCircuitDirtiness 120
 NewCircuitPeriod 30
 
-ExitNodes {de},{fr},{nl},{gb},{se},{ch},{at},{be},{pl},{cz},{it},{es},{no},{dk},{fi},{ro},{hu},{pt},{ie},{sk}
+ExitNodes {de},{nl},{fr},{ch},{se},{gb}
 StrictNodes 1
