@@ -10,6 +10,13 @@ ALLOWED_DOMAINS = [
     b'exitlag.com',
     b'exitlag.net',
     b'r2.dev',
+    b'discord.com',
+    b'discordapp.com',
+    b'discord.media',
+    b'discord.gg',
+    b'discordapp.net',
+    b'hcaptcha.com',
+    b'tenor.com'
 ]
 
 class DomainFilterPlugin(HttpProxyBasePlugin):
