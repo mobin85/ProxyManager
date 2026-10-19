@@ -38,7 +38,7 @@ services:
       --plugins filter_plugin.DomainFilterPlugin
       --plugins proxy.plugin.ProxyPoolPlugin
       --proxy-pool http://tor:8118
-      --proxy-pool socks5://warp:1080
+      --proxy-pool http://warp:1080
 
   warp:
     image: caomingjun/warp
